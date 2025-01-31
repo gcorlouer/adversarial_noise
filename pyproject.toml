@@ -1,0 +1,23 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "adversarial-noise"
+version = "0.1.0"
+description = "Library for generating adversarial examples"
+requires-python = ">=3.8"
+dependencies = [
+    "torch",
+    "torchvision",
+    "Pillow",
+    "numpy",
+    "matplotlib"
+]
+
+[tool.pytest]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+
+[project.optional-dependencies]
+dev = ["pytest>=6.0"]

@@ -116,11 +116,11 @@ class ImageNetLabels:
         self.labels = self._load_labels(labels_path)
     
     def _load_labels(self, labels_path: Optional[str]) -> Dict[int, str]:
-        if labels_path and Path(labels_path).exists():
+        if Path(labels_path).exists():
             with open(labels_path) as f:
                 return json.load(f)
         else:
-            raise ValueError("No labels file provided")
+            raise ValueError(f"Labels file {labels_path} does not exist")
     
     def get_label(self, idx: int) -> str:
         """Get human-readable label for ImageNet class index."""

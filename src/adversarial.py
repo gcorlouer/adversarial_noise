@@ -1,19 +1,20 @@
 import torch
 import torch.nn.functional as F
 from typing import Optional
+from src.data_preproc import ImagePreprocessor
 
-class AdversarialAttack:
-    """Base class for adversarial attacks."""
-    def __init__(self, model, epsilon=0.01):
-        """
-        Initialize adversarial attack.
-        
-        Args:
-            model: PyTorch model to attack
-            epsilon: Perturbation magnitude (default: 0.007)
-        """
+class AdversarialAttack(ImagePreprocessor):
+    def __init__(
+        self, 
+        model, 
+        epsilon=0.3,
+        size=(224, 224),
+        mean=(0.485, 0.456, 0.406),
+        std=(0.229, 0.224, 0.225)
+    ):
+        super().__init__(size=size, mean=mean, std=std)
         self.model = model
-        self.epsilon = epsilon
+        self.epsilon = epsilon 
         self.device = next(model.parameters()).device
 
 
@@ -56,7 +57,7 @@ class FGSMAttack(AdversarialAttack):
         # Create adversarial example
         x_adv = x + perturbation
         
-        # Ensure valid image range [0,1]
-        x_adv = torch.clamp(x_adv, 0, 1)
+        # Ensure valid image range
+        x_adv = torch.clamp(x_adv, -self.mean[0]/self.std[0], (1-self.mean[0])/self.std[0])
         
         return x_adv.detach()
