@@ -1,0 +1,37 @@
+# Core deep learning libraries
+torch        # PyTorch for deep learning
+torchvision # Computer vision utilities and models
+einops 
+pandas
+
+# Image processing
+Pillow      # Python Imaging Library for image operations
+numpy      # Numerical computing library
+
+# Visualization
+matplotlib   # Plotting library
+
+# Testing and development
+pytest>=7.3.1       # Testing framework
+pytest-cov>=4.1.0   # Test coverage plugin
+black>=23.3.0       # Code formatter
+flake8>=6.0.0       # Code linter
+isort>=5.12.0       # Import sorter
+
+# Optional - for development
+jupyter>=1.0.0      # Jupyter notebooks for development and testing
+ipython>=8.12.0     # Interactive Python shell
+tqdm>=4.65.0        # Progress bars for long operations
+
+# Documentation
+sphinx>=7.0.0       # Documentation generator
+sphinx-rtd-theme>=1.2.0  # Documentation theme
+
+# Type checking
+mypy>=1.3.0         # Static type checker
+types-Pillow>=9.5.0 # Type stubs for Pillow
+types-requests>=2.31.0  # Type stubs for requests
+
+# Logging and monitoring
+tensorboard>=2.13.0  # For tracking experiments and visualizing results
+wandb>=0.15.0       # Weights & Biases for experiment tracking (optional)
