@@ -85,14 +85,14 @@ class ModelLoader:
             # Get prediction
             with torch.no_grad():
                 output = self.model(input_tensor)
-                probabilities = torch.nn.functional.softmax(output[0], dim=0)
+                probabilities = torch.nn.functional.softmax(output, dim=-1)
                 
             # Get top k predictions
             top_probs, top_classes = torch.topk(probabilities, top_k)
             
             return (
-                top_classes.cpu().tolist(),
-                top_probs.cpu().tolist()
+                top_classes.tolist(),
+                top_probs.tolist()
             )
     
         except Exception as e:
