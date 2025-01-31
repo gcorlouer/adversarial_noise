@@ -87,7 +87,7 @@ class ImagePreprocessor:
                 if return_pil:
                     return image
                     
-                tensor = self.to_tensor(image).unsqueeze(0)
+                tensor = self.image_to_tensor(image).unsqueeze(0)
                 return tensor
                 
             except Exception as e:
